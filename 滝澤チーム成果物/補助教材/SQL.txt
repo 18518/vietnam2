@@ -1,0 +1,3 @@
+ReserveDAO
+ÅEsearch method sql
+SELECT * FROM reserve A, resource B where B.classid = 6 AND NOT((A.LENDDATE < '2018-01-01' AND A.RETURNDATE > '2018-01-01') OR (A.LENDDATE < '2018-01-31' AND A.RETURNDATE < '2018-01-31') OR A.LENDDATE > '2018-01-01' AND A.RETURNDATE < '2018-01-31');
