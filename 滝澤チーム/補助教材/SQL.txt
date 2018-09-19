@@ -2,4 +2,4 @@ ReserveDAO
 ÅEinsert method sql
 insert into reserve(RESERVEID,LENDDATE,RETURNDATE,EMPID,RESOURCEID) values(12345678,'2018-10-01 10:15:30.0','2018-10-05 10:15:30.0',11111,1);
 ÅEsearch method sql
-SELECT * FROM reserve A, resource B where A.resourceid=B.resourceid AND B.classid = 6 AND NOT((A.LENDDATE < '2018-01-01' AND A.RETURNDATE > '2018-01-01') OR (A.LENDDATE < '2018-01-31' AND A.RETURNDATE < '2018-01-31') OR A.LENDDATE > '2018-01-01' AND A.RETURNDATE < '2018-01-31');
+"SELECT resourceid, resourcename FROM resource B where B.classid = "+classId+" and not B.resourceid in (select resourceid from reserve where ('"+lendDate+"' < reserve.lenddate and reserve.lenddate <'"+returnDate+"') or ('"+lendDate+"' < reserve.returndate and reserve.returndate <'"+returnDate+"') or (reserve.lenddate <= '"+lendDate+"' AND returndate >= '"+returnDate+"'))";
